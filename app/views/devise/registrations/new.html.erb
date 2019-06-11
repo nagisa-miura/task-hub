@@ -1,0 +1,47 @@
+<div class="signupPage">
+  <div class="titleArea">
+    <h1>アカウントを新規作成</h1>
+    <div class="m-3">or</div>
+    <%= render "devise/shared/links" %>
+  </div>
+
+  <div class="container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "mt-5, signupForm" }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <%# 名前入力欄 %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control", placeholder: "名前を入力してください" %>
+      </div> <%# form-group %>
+
+      <%# メールアドレス入力欄 %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control", placeholder: "メールアドレスを入力してください", autocomplete: "email" %>
+      </div> <%# form-group %>
+
+      <%# パスワード入力欄 %>
+      <div class="form-group">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %>文字以上入力してください)</em>
+        <% end %><br />
+        <%= f.password_field :password, class: "form-control", placeholder:"パスワードを入力してください", autocomplete: "off" %>
+      </div> <%# form-group %>
+
+      <%# パスワード確認欄 %>
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class:"form-control", placeholder:"パスワードを再度入力してください", autocomplete: "off" %>
+      </div> <%# form-group %>
+
+      <%# 送信ボタン %>
+      <div class="form-group">
+        <%= f.submit "アカウントを作成", class: "btn submitBtn" %>
+      </div> <%# form-group %>
+
+    <% end %>
+  </div> <%# container %>
+</div> <%# signupPage %>
+

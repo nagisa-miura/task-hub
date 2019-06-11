@@ -1,0 +1,24 @@
+<div class="signinPage">
+  <div class="container">
+    <h2 class="title">TaskHubにログイン</h2>
+    <div class="text-center m-3">or</div>
+    <div class="text-center"><%= render "devise/shared/links" %></div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: "form-control", autocomplete: "email", placeholder: "emailを入力してください" %>
+      </div> <%# form-group %>
+
+      <div class="form-froup">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, class: "form-control", autocomplete: "off", placeholder: "パスワードを入力してください" %>
+      </div> <%# form-group %>
+
+      <div class="form-group text-center">
+        <%= f.submit "ログインする", class: "loginBtn "%>
+      </div> <%# form-group text-center %>
+
+    <% end %> <%# form_for %>
+  </div> <%# container %>
+</div> <%# signinPage %>
+
