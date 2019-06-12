@@ -1,0 +1,12 @@
+<div class="listnewPage">
+  <div class="conteiner">
+    <%= form_with model: @list, url: { action: :create }, class: "new_list" do |f| %>
+      <% if @list.errors.any? %>
+        <p class="text-danger">タイトルは255字以内で入力してください</p>
+      <% end %>
+      <%= f.label :title %>
+      <%= f.text_field :title, autufocus: true, class: "form-control listName", placeholder: "リスト名" %>
+      <div class="text-center"><%= f.submit "作成", class: "submitBtn" %></div>
+    <% end %>
+  </div> <%# container %>
+</div> <%# listnewPage %>
