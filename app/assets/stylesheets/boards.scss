@@ -1,0 +1,24 @@
+.boardsListWrapper {
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 65px);
+  background-color: #000;
+
+  .boardsList {
+    background-color: #fcc;
+    min-height: calc(100vh - 65px);
+    width: 75%;
+    display: flex;
+    
+    .board{
+      background-color: gray;
+      width: 40%;
+      height: 200px;
+    }
+  }
+  .sideBar {
+    background-color: #fea;
+    min-height: calc(100vh - 65px);
+    width: 25%;
+  }
+} /* .boardsListWrapper */

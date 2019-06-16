@@ -1,12 +1,15 @@
 <header class="header">
   <nav class="nav">
     <ul class="header_menu">
-      <li class="nav-link"><%= current_user.name %>さん</li>
+      <li><%= link_to "ボード一覧", boards_path, class: "nav-link boardsIndex" %></li>
       <li class="header_menu_title"><%= link_to "TaskHub", root_path, class: "nav-link" %></li>
       <li>
         <ul class="header_menu_inner">
           <li><%= link_to "リストを作成", new_list_path, class: "nav-link listNew" %></li>
+          <li><%= link_to "ボードを作成", new_board_path, class: "nav-link boardsNew" %></li> <%# FIXME: ボード新規作成のリンク仮置き %>
           <li><%= link_to "ログアウト", destroy_user_session_path, class: "nav-link", method: :delete %></li>
+          <li class="nav-link"><%= current_user.name %>さん</li>
+
         </ul> <%# header_menu_inner %>
       </li>
     </ul> <%# header_menu %>

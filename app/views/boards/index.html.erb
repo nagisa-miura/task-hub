@@ -1,0 +1,20 @@
+<div class="boardsListWrapper">
+  <div class="boardsList">
+    <% @boards.each.with_index(1) do |board, i| %>
+      <div class="board">
+        <h1 class="boardTitle text-center">
+          <%= board.title %>
+        </h1><!-- /.boardTitle -->
+        <p class="boardDetail">
+          <%= board.detail %>
+        </p><!-- /.boardDetail -->
+      </div><!-- /.board -->
+    <% end %>
+  </div><!-- /.boardsList -->
+
+  <div class="sideBar">
+    <h1 class="rankingTitle text-center">
+      月間ランキング
+    </h1><!-- /.rankingTitle -->
+  </div><!-- /.sideBar -->
+</div><!-- /.boardListWrapper -->

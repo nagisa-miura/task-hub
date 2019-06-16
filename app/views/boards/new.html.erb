@@ -1,9 +1,7 @@
-<div class="cardnewPage">
+<div class="boardnewPage">
   <div class="container">
-    <%= form_with model: @card, url: { action: :create }, html: { class: "cardnewForm" } do |f| %>
-      <%# ↓FIXME: セキュリティ的に非推奨↓ %>
-      <%= f.hidden_field :list_id, value: @list.id %> 
-      <% if @card.errors.any? %>
+    <%= form_with model: @board, url: { action: :create }, html: { class: "boardnewForm" } do |f| %>
+      <% if @board.errors.any? %>
         <p class="text-danger">タイトルは1~255文字以内で入力してください</p>
       <% end %>
       <div class="text-center cardnewForm_title">
@@ -11,8 +9,8 @@
         <%= f.text_area :title, autofocus: true, class: "form-control", placeholder: "タイトル" %>
       </div> <%# cardnewForm %>
       <div class="text-center">
-        <%= f.label :memo %>
-        <%= f.text_area :memo, autofocus: true, class: "form-control", placeholder: "詳細" %>
+        <%= f.label :detail %>
+        <%= f.text_area :detail, autofocus: true, class: "form-control", placeholder: "詳細" %>
         <div class="text-center"><%= f.submit "作成する", class: "submitBtn" %></div>
       </div> <%# text-center %>
     <% end %>
