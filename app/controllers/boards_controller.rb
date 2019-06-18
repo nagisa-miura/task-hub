@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+before_action :set_board, only: %i(show destroy)
+
   def index
     @boards = Board.all
   end
@@ -11,15 +13,28 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      redirect_to :root
+      redirect_to :boards
     else
       @board.valid?
       render action: :new
     end
   end
 
+  def show
+    @lists = List.where(id: params[:id])
+  end
+
+  def destroy
+    @board.destroy
+    redirect_to :boards
+  end
+
   private
   def board_params
     params.require(:board).permit(:title, :detail, :user_id).merge(user: current_user)
+  end
+
+  def set_board
+    @board = Board.find_by(id: params[:id])
   end
 end

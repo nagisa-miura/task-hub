@@ -1,20 +1,37 @@
-<div class="boardsListWrapper">
-  <div class="boardsList">
-    <% @boards.each.with_index(1) do |board, i| %>
-      <div class="board">
+<div class="boardsListWrapper container-fluid ">
+  
+  <!------------------ 左側ボードリスト ----------------->
+  <div class="boardsList col-md-9">
+    <% @boards.each do |board| %>
+      <div class="board bg-success">
         <h1 class="boardTitle text-center">
-          <%= board.title %>
+          <!-- FIXME: マイページに移すか作成者のみ削除できるように要変更 -->
+          <%= link_to "#{board.title}", board_path(board.id) %>
+          <%= link_to content_tag(:i, '', class: 'fas fa-trash'), board, method: :delete, data: {confirm: "#{board.title}を削除して大丈夫ですか？" } %>
         </h1><!-- /.boardTitle -->
-        <p class="boardDetail">
+        
+        <p class="boardDetail text-center">
           <%= board.detail %>
         </p><!-- /.boardDetail -->
       </div><!-- /.board -->
     <% end %>
   </div><!-- /.boardsList -->
 
-  <div class="sideBar">
+  <!-------------------右側サイドバー---------------------->
+  <div class="rankingBar col-md-3 ">
     <h1 class="rankingTitle text-center">
       月間ランキング
     </h1><!-- /.rankingTitle -->
+    <% @boards.each.with_index(1) do |board, i| %>
+      <div class="rankingCard card bg-success h-25">
+        <h1 class="boardTitle text-center">
+          <%= i.to_s + board.title %>
+        </h1><!-- /.boardTitle -->
+        <p class="boardDetail text-center">
+          <%= board.detail %>
+        </p><!-- /.boardDetail -->
+      </div><!-- /.board -->
+    <% end %>
   </div><!-- /.sideBar -->
-</div><!-- /.boardListWrapper -->
+
+</div><!-- /.container-fluid -->

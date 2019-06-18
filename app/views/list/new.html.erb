@@ -6,6 +6,7 @@
       <% end %>
       <%= f.label :title %>
       <%= f.text_field :title, autufocus: true, class: "form-control listName", placeholder: "リスト名" %>
+      <%= f.hidden_field :board_id, value: params[:id] %> 
       <div class="text-center"><%= f.submit "作成", class: "submitBtn" %></div>
     <% end %>
   </div> <%# container %>

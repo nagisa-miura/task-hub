@@ -1,24 +1,29 @@
 .boardsListWrapper {
   display: flex;
-  width: 100vw;
-  height: calc(100vh - 65px);
-  background-color: #000;
+  height: calc(100vh - 56px);
+  background-color: whitesmoke;
+
 
   .boardsList {
-    background-color: #fcc;
-    min-height: calc(100vh - 65px);
-    width: 75%;
     display: flex;
-    
-    .board{
-      background-color: gray;
-      width: 40%;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    padding-top: 10px;
+    align-content: flex-start;
+
+    .board {
       height: 200px;
+      width: 300px;
+      margin: 30px 20px 0 0;
+      border-radius: 6px;
     }
-  }
-  .sideBar {
-    background-color: #fea;
-    min-height: calc(100vh - 65px);
-    width: 25%;
+  } /* boardList */
+
+  .rankingBar {
+    overflow-y: scroll;
+
+    .rankingCard {
+      margin-top: 10px;
+    }
   }
 } /* .boardsListWrapper */

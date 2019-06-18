@@ -7,8 +7,10 @@ class ListController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @board = Board.find_by(params[:id])
+    binding.pry
     if @list.save
-      redirect_to :root
+      redirect_to board_path(id: @board.id)
     else
       @list.valid?
       render action: :new
@@ -34,10 +36,11 @@ class ListController < ApplicationController
 
   private
   def list_params
-    params.require(:list).permit(:title).merge(user: current_user)
+    params.require(:list).permit(:title, :board_id).merge(user: current_user)
   end
 
   def set_list
     @list = List.find_by(id: params[:id])
   end
+
 end

@@ -1,17 +1,37 @@
-<header class="header">
-  <nav class="nav">
-    <ul class="header_menu">
-      <li><%= link_to "ボード一覧", boards_path, class: "nav-link boardsIndex" %></li>
-      <li class="header_menu_title"><%= link_to "TaskHub", root_path, class: "nav-link" %></li>
-      <li>
-        <ul class="header_menu_inner">
-          <li><%= link_to "リストを作成", new_list_path, class: "nav-link listNew" %></li>
-          <li><%= link_to "ボードを作成", new_board_path, class: "nav-link boardsNew" %></li> <%# FIXME: ボード新規作成のリンク仮置き %>
-          <li><%= link_to "ログアウト", destroy_user_session_path, class: "nav-link", method: :delete %></li>
-          <li class="nav-link"><%= current_user.name %>さん</li>
+<nav class="myHeader navbar navbar-expand-lg navbar-light static-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <%= link_to "TaskHub", root_path, class: "navbar-brand title" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to 'リストを作成', new_list_path(id: params[:id]), class: "nav-link"%>
 
-        </ul> <%# header_menu_inner %>
-      </li>
-    </ul> <%# header_menu %>
-  </nav>
-</header>
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'ボードを作成', new_board_path, class: "nav-link"%>
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'ボード一覧', boards_path, class: "nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%=  link_to "#{current_user.name}", root_path, class: "nav-link"%>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
