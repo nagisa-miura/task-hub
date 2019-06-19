@@ -1,5 +1,6 @@
 class ListController < ApplicationController
   before_action :set_list, only: %i(edit update destroy)
+  # before_action :set_board, only: %i(create)
 
   def new
     @list = List.new
@@ -7,10 +8,8 @@ class ListController < ApplicationController
 
   def create
     @list = List.new(list_params)
-    @board = Board.find_by(params[:id])
-    binding.pry
     if @list.save
-      redirect_to board_path(id: @board.id)
+      redirect_to board_path(id: @list.board_id)
     else
       @list.valid?
       render action: :new
@@ -22,7 +21,7 @@ class ListController < ApplicationController
 
   def update
     if @list.update_attributes(list_params)
-      redirect_to :root
+      redirect_to board_path(id: @list.board_id)
     else
       @list.valid?
       render action: :edit
@@ -31,7 +30,7 @@ class ListController < ApplicationController
 
   def destroy
     @list.destroy
-    redirect_to :root
+    redirect_to board_path(id: @list.board_id)
   end
 
   private

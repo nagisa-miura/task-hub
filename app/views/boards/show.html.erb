@@ -11,6 +11,7 @@
           </div>
         </div> <%# list_header %>
 
+        <%# リスト内にカードを表示 %>
         <div class="cardWrapper", id="sortableList">
           <% list.cards.each do |card| %>
             <%= link_to list_card_path(list, card), class:"cardDetail_link" do %>

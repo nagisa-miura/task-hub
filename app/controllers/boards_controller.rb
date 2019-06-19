@@ -21,7 +21,7 @@ before_action :set_board, only: %i(show destroy)
   end
 
   def show
-    @lists = List.where(id: params[:id])
+    @lists = List.where(board_id: params[:id]).includes(:cards)
   end
 
   def destroy

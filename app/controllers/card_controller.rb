@@ -4,12 +4,14 @@ class CardController < ApplicationController
   def new
     @card = Card.new
     @list = List.find_by(id: params[:list_id])
+    @board = Board.find_by(id: @list[:board_id])
   end
 
   def create
     @card = Card.new(card_params)
+    @list = List.find_by(id: params[:list_id])
     if @card.save
-      redirect_to :root
+      redirect_to board_path(id: @list.board_id)
     else
       @card.valid?
       render action: :new
@@ -45,5 +47,9 @@ class CardController < ApplicationController
   def set_card
     @card = Card.find_by(id: params[:id])
   end
+
+  # def set_board
+  #   @board = Board.find_by(id: params[:id])
+  # end
 
 end
