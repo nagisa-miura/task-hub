@@ -3,7 +3,8 @@ class CardController < ApplicationController
 
   def new
     @card = Card.new
-    @list = List.find_by(id: params[:list_id])
+    # includesで@boardを関連でもってこれそう
+    @list = List.find_by(id: params[:list_id])  
     @board = Board.find_by(id: @list[:board_id])
   end
 

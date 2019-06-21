@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -74,3 +75,4 @@ gem 'jquery-ui-rails'
 gem 'font-awesome-sass'
 gem 'rails-i18n'
 gem 'acts_as_list'
+gem 'rspec-rails'
